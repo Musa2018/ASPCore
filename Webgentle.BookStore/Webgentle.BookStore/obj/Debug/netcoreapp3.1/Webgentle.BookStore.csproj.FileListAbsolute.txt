@@ -392,3 +392,4 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.MvcApplicationPartsAssemblyInfo.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\ContactUs.cshtml.g.cs
