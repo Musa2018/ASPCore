@@ -31,11 +31,7 @@ namespace Webgentle.BookStore
 
             app.UseRouting();
             app.UseStaticFiles();
-            app.UseStaticFiles(new StaticFileOptions()
-            {
-                FileProvider = new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "MyStaticFile")),
-                RequestPath="/MyStaticFile"
-            }) ;
+           
 
             app.UseEndpoints(endpoints =>
             {
