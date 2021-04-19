@@ -104,7 +104,6 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.Views.pdb
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Home\AboutUs.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\GetAllBooks.cshtml.g.cs
-E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\ContactUs.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\libman.json
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Antiforgery.dll
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\refs\Microsoft.AspNetCore.Authentication.Abstractions.dll
@@ -392,3 +391,4 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\bin\Debug\netcoreapp3.1\System.Text.Json.dll
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.MvcApplicationPartsAssemblyInfo.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
