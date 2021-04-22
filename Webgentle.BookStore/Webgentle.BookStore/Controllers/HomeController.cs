@@ -14,6 +14,7 @@ namespace Webgentle.BookStore.Controllers
         }
         public ViewResult AboutUs()
         {
+            ViewBag.Title = "About Us";
             return View();
         }
         public ViewResult ContactUs()
