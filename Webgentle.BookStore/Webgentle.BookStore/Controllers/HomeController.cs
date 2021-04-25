@@ -7,18 +7,22 @@ using System.Threading.Tasks;
 namespace Webgentle.BookStore.Controllers
 {
     public class HomeController:Controller
-    {
+    {    [ViewData]
+        public string Title { get; set; }
         public ViewResult Index()
         {
+            
+            Title = "Home";
             return View();
         }
         public ViewResult AboutUs()
         {
-            ViewBag.Title = "About Us";
+            Title = "About Us";
             return View();
         }
         public ViewResult ContactUs()
         {
+            Title = "Contact Us";
             return View();
         }
     }
