@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" href="/">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index" >
                     <img src="~/images/logo.png" width="30" height="30" />
                     Book Store
                 </a>
@@ -28,10 +28,12 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item"><a class="nav-link text-dark" href="/">Home</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="/home/aboutus">About</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="/home/contactus">Contact</a></li>
-                        <li class="nav-item"><a class="nav-link text-dark" href="/book/getallbooks">All Books</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="Index">Home</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="aboutUs">About</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="Home" asp-action="ContactUs">Contact</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="book" asp-action="getallbooks">All Books</a></li>
+                        <li class="nav-item"><a class="nav-link text-dark" asp-controller="book" asp-action="Addbook">Add book</a></li>
+
 
 
                     </ul>

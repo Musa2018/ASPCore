@@ -396,3 +396,4 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\GetBook.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\AddBook.cshtml.g.cs

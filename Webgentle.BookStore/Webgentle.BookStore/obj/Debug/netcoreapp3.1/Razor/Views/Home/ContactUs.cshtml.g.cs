@@ -20,7 +20,7 @@ using Webgentle.BookStore.Models;
 #line hidden
 #nullable disable
     [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"31d2910c790af853e13e0f14bbb8f2280960877e", @"/Views/Home/ContactUs.cshtml")]
-    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"f56a146c28d389bc13cf20676fa703a0902678b2", @"/Views/_ViewImports.cshtml")]
+    [global::Microsoft.AspNetCore.Razor.Hosting.RazorSourceChecksumAttribute(@"SHA1", @"061dcc81e42b63ac0cc5388db0369a0ab2eaa180", @"/Views/_ViewImports.cshtml")]
     public class Views_Home_ContactUs : global::Microsoft.AspNetCore.Mvc.Razor.RazorPage<dynamic>
     {
         #pragma warning disable 1998
