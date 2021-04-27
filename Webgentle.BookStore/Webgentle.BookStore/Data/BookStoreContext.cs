@@ -13,7 +13,7 @@ namespace Webgentle.BookStore.Data
         {
 
         }
-       
+        public DbSet<Books> Books { get; set; }
        
     }
 }

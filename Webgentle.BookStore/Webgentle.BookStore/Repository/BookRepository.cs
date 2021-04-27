@@ -1,23 +1,66 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Webgentle.BookStore.Data;
 using Webgentle.BookStore.Models;
 
 namespace Webgentle.BookStore.Repository
 {
     public class BookRepository
     {
-        public List<BookModel> GetAllBooks()
+        private readonly BookStoreContext _context = null;
+
+        public BookRepository(BookStoreContext context)
         {
-            return DataSource();
+            _context = context;
+        }
+        public async Task<int> AddNewBook(BookModel model)
+        {
+            var newBook = new Books()
+            {
+                Author=model.Author,
+                CreatedOn=DateTime.UtcNow,
+                Description=model.Description,
+                Title=model.Title,
+                ToTalPages=model.ToTalPages,
+                UpdatedOn=DateTime.UtcNow
+            };
+
+          await  _context.Books.AddAsync(newBook);
+          await  _context.SaveChangesAsync();
+            return newBook.id;
+        }
+        public async Task<List<BookModel>> GetAllBooks()
+        {
+            var books = new List<BookModel>();
+            var allBooks = await _context.Books.ToListAsync();
+            if (allBooks?.Any() == true)
+            {
+                foreach (var book in allBooks)
+                {
+                    books.Add(new BookModel()
+                    {
+                        Author = book.Author,
+                        Category=book.Category,
+                        id=book.id,
+                        ToTalPages=book.ToTalPages,
+                        Language=book.Language,
+                        Title=book.Title,
+                        Description=book.Description
+                    });
+                    
+                }
+            }
+            return books;
         }
 
         public BookModel GetBookById(int id)
         {
             return DataSource().Where(x => x.id == id).FirstOrDefault();
         }
-        public List<BookModel> SearchBook(string title,string authorName)
+        public List<BookModel> SearchBook(string title, string authorName)
         {
             return DataSource().Where(x => x.Title.Contains(title) || x.Author.Contains(authorName)).ToList();
         }

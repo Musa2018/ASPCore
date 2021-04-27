@@ -14,19 +14,19 @@ namespace Webgentle.BookStore.Controllers
         public string Title { get; set; }
 
         public readonly BookRepository _bookRepository=null;
-        public BookController()
+        public BookController(BookRepository bookRepository)
         {
-            _bookRepository = new BookRepository();
+            _bookRepository = bookRepository;
         }
-        public ViewResult GetAllBooks()
+        public async Task<ViewResult>  GetAllBooks()
         {
             Title = "All Books";
-            var data= _bookRepository.GetAllBooks();
+            var data= await _bookRepository.GetAllBooks();
             return View(data);
         }
         public ViewResult GetBook(int id)
         {   
-            var data= _bookRepository.GetBookById(id);
+            var data=  _bookRepository.GetBookById(id);
             Title = "Book Details-"+ data.Title;
             return View(data);
         }
@@ -34,16 +34,23 @@ namespace Webgentle.BookStore.Controllers
         {
             return _bookRepository.SearchBook(bookName,authorName);
         }
-       public ViewResult AddBook()
+       public ViewResult AddBook(bool isSuccess = false,int bookId=0)
         {
             Title = "Add Book";
+            ViewBag.IsSuccess = isSuccess;
+            ViewBag.bookId = bookId;
             return View();
         }
 
         [HttpPost]
-        public ViewResult AddBook(BookModel bookModel)
+        public async Task<IActionResult>  AddBook(BookModel bookModel)
         {
             Title = "Add Book";
+            int id =await _bookRepository.AddNewBook(bookModel);
+                if(id > 0)
+            {
+                return RedirectToAction(nameof(AddBook),new { isSuccess=true,bookId=id});
+            }
             return View();
         }
     }
