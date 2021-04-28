@@ -24,9 +24,9 @@ namespace Webgentle.BookStore.Controllers
             var data= await _bookRepository.GetAllBooks();
             return View(data);
         }
-        public ViewResult GetBook(int id)
+        public async Task<ViewResult>  GetBook(int id)
         {   
-            var data=  _bookRepository.GetBookById(id);
+            var data= await _bookRepository.GetBookById(id);
             Title = "Book Details-"+ data.Title;
             return View(data);
         }
@@ -46,11 +46,16 @@ namespace Webgentle.BookStore.Controllers
         public async Task<IActionResult>  AddBook(BookModel bookModel)
         {
             Title = "Add Book";
-            int id =await _bookRepository.AddNewBook(bookModel);
-                if(id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddBook),new { isSuccess=true,bookId=id});
+                int id = await _bookRepository.AddNewBook(bookModel);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookId = id });
+                }
             }
+            ModelState.AddModelError("", "custom error message");
+           
             return View();
         }
     }

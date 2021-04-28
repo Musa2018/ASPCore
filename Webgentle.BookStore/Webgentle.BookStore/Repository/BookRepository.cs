@@ -24,7 +24,7 @@ namespace Webgentle.BookStore.Repository
                 CreatedOn=DateTime.UtcNow,
                 Description=model.Description,
                 Title=model.Title,
-                ToTalPages=model.ToTalPages,
+                ToTalPages=model.ToTalPages.HasValue? model.ToTalPages.Value:0,
                 UpdatedOn=DateTime.UtcNow
             };
 
@@ -56,10 +56,27 @@ namespace Webgentle.BookStore.Repository
             return books;
         }
 
-        public BookModel GetBookById(int id)
+        public async Task<BookModel>  GetBookById(int id)
         {
-            return DataSource().Where(x => x.id == id).FirstOrDefault();
+            var book = await _context.Books.FindAsync(id);
+            if(book != null)
+            {
+                var bookDetails = new BookModel()
+                {
+                    Author = book.Author,
+                    Category = book.Category,
+                    id = book.id,
+                    ToTalPages = book.ToTalPages,
+                    Language = book.Language,
+                    Title = book.Title,
+                    Description = book.Description
+
+                };
+                return bookDetails;
+            }
+            return null;
         }
+
         public List<BookModel> SearchBook(string title, string authorName)
         {
             return DataSource().Where(x => x.Title.Contains(title) || x.Author.Contains(authorName)).ToList();
