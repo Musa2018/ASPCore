@@ -21,7 +21,8 @@ namespace Webgentle.BookStore
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(@"server=.\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
+            services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(@"server=SAQERPC-PC\SQL2016;Database=BookStore;Integrated Security=True;"));
+           // services.AddDbContext<BookStoreContext>(options => options.UseSqlServer(@"server=.\SQLEXPRESS;Database=BookStore;Integrated Security=True;"));
             services.AddControllersWithViews();
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();

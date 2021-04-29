@@ -24,6 +24,7 @@ namespace Webgentle.BookStore.Repository
                 CreatedOn=DateTime.UtcNow,
                 Description=model.Description,
                 Title=model.Title,
+                Language=model.Language,
                 ToTalPages=model.ToTalPages.HasValue? model.ToTalPages.Value:0,
                 UpdatedOn=DateTime.UtcNow
             };
