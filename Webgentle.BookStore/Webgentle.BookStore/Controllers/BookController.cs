@@ -43,16 +43,16 @@ namespace Webgentle.BookStore.Controllers
                 //Language = "2"
             };
             
-            ViewBag.Language = new List<SelectListItem>()
-            {
-                new SelectListItem(){Text="Arabic",Value="1"},
-                new SelectListItem(){Text="English",Value="2"},
-                new SelectListItem(){Text="Germany",Value="3"},
-                new SelectListItem(){Text="Hindi",Value="4"},
-                new SelectListItem(){Text="Dutch",Value="5"},
-                new SelectListItem(){Text="Italy",Value="6"},
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text="Arabic",Value="1"},
+            //    new SelectListItem(){Text="English",Value="2"},
+            //    new SelectListItem(){Text="Germany",Value="3"},
+            //    new SelectListItem(){Text="Hindi",Value="4"},
+            //    new SelectListItem(){Text="Dutch",Value="5"},
+            //    new SelectListItem(){Text="Italy",Value="6"},
 
-            };
+            //};
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
             return View(model);
@@ -70,16 +70,16 @@ namespace Webgentle.BookStore.Controllers
                     return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookId = id });
                 }
             }
-            ViewBag.Language = new List<SelectListItem>()
-            {
-                new SelectListItem(){Text="Arabic",Value="1"},
-                new SelectListItem(){Text="English",Value="2"},
-                new SelectListItem(){Text="Germany",Value="3"},
-                new SelectListItem(){Text="Hindi",Value="4"},
-                new SelectListItem(){Text="Dutch",Value="5"},
-                new SelectListItem(){Text="Italy",Value="6"},
+            //ViewBag.Language = new List<SelectListItem>()
+            //{
+            //    new SelectListItem(){Text="Arabic",Value="1"},
+            //    new SelectListItem(){Text="English",Value="2"},
+            //    new SelectListItem(){Text="Germany",Value="3"},
+            //    new SelectListItem(){Text="Hindi",Value="4"},
+            //    new SelectListItem(){Text="Dutch",Value="5"},
+            //    new SelectListItem(){Text="Italy",Value="6"},
 
-            };
+            //};
 
             return View();
         }
