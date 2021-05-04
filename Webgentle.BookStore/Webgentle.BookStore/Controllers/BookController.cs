@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -37,9 +38,14 @@ namespace Webgentle.BookStore.Controllers
        public ViewResult AddBook(bool isSuccess = false,int bookId=0)
         {
             Title = "Add Book";
+            var model = new BookModel
+            {
+                Language = "2"
+            };
+            ViewBag.Language =new SelectList(GetLanguage(),"Id","Text");
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
-            return View();
+            return View(model);
         }
 
         [HttpPost]
@@ -54,9 +60,18 @@ namespace Webgentle.BookStore.Controllers
                     return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookId = id });
                 }
             }
-            ModelState.AddModelError("", "custom error message");
+            ViewBag.Language = new SelectList(GetLanguage(), "Id", "Text");
            
             return View();
+        }
+        private List<LanguageModel> GetLanguage()
+        {
+            return new List<LanguageModel>()
+            {
+                new LanguageModel(){Id=1,Text="Arabic"},
+                new LanguageModel(){Id=2,Text="English"},
+                new LanguageModel(){Id=3,Text="Germany"}
+            };
         }
     }
 }
