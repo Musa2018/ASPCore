@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Webgentle.BookStore.Data;
 
 namespace Webgentle.BookStore.Migrations
 {
     [DbContext(typeof(BookStoreContext))]
-    partial class BookStoreContextModelSnapshot : ModelSnapshot
+    [Migration("20210505202755_Update-Languages-Table-2")]
+    partial class UpdateLanguagesTable2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -38,7 +40,10 @@ namespace Webgentle.BookStore.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("LanguagesId")
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.Property<int?>("LanguagesId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -79,9 +84,7 @@ namespace Webgentle.BookStore.Migrations
                 {
                     b.HasOne("Webgentle.BookStore.Data.Languages", "Languages")
                         .WithMany("Books")
-                        .HasForeignKey("LanguagesId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("LanguagesId");
 
                     b.Navigation("Languages");
                 });

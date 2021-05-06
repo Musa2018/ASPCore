@@ -15,9 +15,11 @@ namespace Webgentle.BookStore.Controllers
         public string Title { get; set; }
 
         public readonly BookRepository _bookRepository=null;
-        public BookController(BookRepository bookRepository)
+        public readonly LanguagesRepository _languagesRepository=null;
+        public BookController(BookRepository bookRepository,LanguagesRepository languagesRepository)
         {
             _bookRepository = bookRepository;
+            _languagesRepository = languagesRepository;
         }
         public async Task<ViewResult>  GetAllBooks()
         {
@@ -35,24 +37,15 @@ namespace Webgentle.BookStore.Controllers
         {
             return _bookRepository.SearchBook(bookName,authorName);
         }
-       public ViewResult AddBook(bool isSuccess = false,int bookId=0)
+       public async Task<ViewResult> AddBook(bool isSuccess = false,int bookId=0)
         {
             Title = "Add Book";
             var model = new BookModel
             {
                 //Language = "2"
             };
+           ViewBag.Language=new SelectList( await _languagesRepository.GetLanguages(),"Id","Name");
             
-            //ViewBag.Language = new List<SelectListItem>()
-            //{
-            //    new SelectListItem(){Text="Arabic",Value="1"},
-            //    new SelectListItem(){Text="English",Value="2"},
-            //    new SelectListItem(){Text="Germany",Value="3"},
-            //    new SelectListItem(){Text="Hindi",Value="4"},
-            //    new SelectListItem(){Text="Dutch",Value="5"},
-            //    new SelectListItem(){Text="Italy",Value="6"},
-
-            //};
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
             return View(model);
@@ -70,27 +63,12 @@ namespace Webgentle.BookStore.Controllers
                     return RedirectToAction(nameof(AddBook), new { isSuccess = true, bookId = id });
                 }
             }
-            //ViewBag.Language = new List<SelectListItem>()
-            //{
-            //    new SelectListItem(){Text="Arabic",Value="1"},
-            //    new SelectListItem(){Text="English",Value="2"},
-            //    new SelectListItem(){Text="Germany",Value="3"},
-            //    new SelectListItem(){Text="Hindi",Value="4"},
-            //    new SelectListItem(){Text="Dutch",Value="5"},
-            //    new SelectListItem(){Text="Italy",Value="6"},
 
-            //};
+            ViewBag.Language = new SelectList(await _languagesRepository.GetLanguages(), "Id", "Name");
+
 
             return View();
         }
-        private List<LanguageModel> GetLanguage()
-        {
-            return new List<LanguageModel>()
-            {
-                new LanguageModel(){Id=1,Text="Arabic"},
-                new LanguageModel(){Id=2,Text="English"},
-                new LanguageModel(){Id=3,Text="Germany"}
-            };
-        }
+       
     }
 }
