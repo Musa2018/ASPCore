@@ -4,14 +4,16 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 using Webgentle.BookStore.Enums;
+using Webgentle.BookStore.Helpers;
 
 namespace Webgentle.BookStore.Models
 {
     public class BookModel
     {
         public int id { get; set; }
-        [StringLength(100,MinimumLength =5)]
-        [Required(ErrorMessage ="Please enter book title")]
+        //[StringLength(100,MinimumLength =5)]
+        //[Required(ErrorMessage ="Please enter book title")]
+        [MyCustomValidationAttribute("good")]
         public string Title { get; set; }
         [Required(ErrorMessage = "Please enter Author Name")]
         public string Author { get; set; }
