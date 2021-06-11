@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using Webgentle.BookStore.Models;
@@ -16,10 +19,12 @@ namespace Webgentle.BookStore.Controllers
 
         public readonly BookRepository _bookRepository=null;
         public readonly LanguagesRepository _languagesRepository=null;
-        public BookController(BookRepository bookRepository,LanguagesRepository languagesRepository)
+        public readonly IWebHostEnvironment _webHostEnvironment;
+        public BookController(BookRepository bookRepository,LanguagesRepository languagesRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _languagesRepository = languagesRepository;
+            _webHostEnvironment = webHostEnvironment;
         }
         public async Task<ViewResult>  GetAllBooks()
         {
@@ -57,6 +62,38 @@ namespace Webgentle.BookStore.Controllers
             Title = "Add Book";
             if (ModelState.IsValid)
             {
+                if (bookModel.coverPhoto!=null) {
+                    string folder = "books/cover/";
+                  bookModel.CoverImageUrl =  await UploadImage(folder, bookModel.coverPhoto);
+                    //folder += Guid.NewGuid().ToString() + "_" + bookModel.coverPhoto.FileName;
+                    //bookModel.CoverImageUrl = "/"+folder;
+                    //string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath,folder);
+                    //await bookModel.coverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
+
+
+                }
+                if (bookModel.galleryFiles != null)
+                {
+                    string folder = "books/gallery/";
+                    bookModel.Gallery = new List<GalleryModel>();
+
+                    foreach (var file in bookModel.galleryFiles)
+                    {
+                        var gallery = new GalleryModel() {
+                            Name = file.FileName,
+                            URL = await UploadImage(folder, file)
+                    };
+
+                        bookModel.Gallery.Add(gallery);
+
+                    }
+                    //folder += Guid.NewGuid().ToString() + "_" + bookModel.coverPhoto.FileName;
+                    //bookModel.CoverImageUrl = "/"+folder;
+                    //string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath,folder);
+                    //await bookModel.coverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
+
+
+                }
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)
                 {
@@ -68,6 +105,15 @@ namespace Webgentle.BookStore.Controllers
 
 
             return View();
+        }
+
+        private async Task<string> UploadImage(string folderPath,IFormFile file)
+        {
+            
+            folderPath += Guid.NewGuid().ToString() + "_" + file.FileName;
+            string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath, folderPath);
+            await file.CopyToAsync(new FileStream(serverFolder, FileMode.Create));
+            return "/" + folderPath;
         }
        
     }
