@@ -1,20 +1,12 @@
-﻿
+﻿@model IEnumerable<BookModel>
 <div class="container">
-    <h3>All Book List</h3>
+    <h3 class="display-4">All Book List</h3>
     <div class="row">
         @foreach (var book in Model)
         {
-            <div class="col-lg-4 mb-4">
-                <div class="card mb-4 shadow-sm">
-                    <img src="@book.CoverImageUrl" alt="" class="img-thumbnail">
-                    <div class="card-body">
-                        <h5 class="card-title">@book.Title</h5>
-                        <p class="card-text">@book.Description</p>
-                        <a asp-controller="book" asp-action="getbook" asp-route-id="@book.id"   class="btn btn-outline-primary btn-sm">Read More</a>
-                        <small class="text-muted float-right">@book.Author</small>
-                    </div>
-                </div>
-            </div>
+          <div class="col-md-4">
+              <partial name="_book" model="@book"/>
+          </div>  
 
         }
 

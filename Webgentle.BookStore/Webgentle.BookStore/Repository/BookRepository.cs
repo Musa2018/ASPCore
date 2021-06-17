@@ -27,7 +27,8 @@ namespace Webgentle.BookStore.Repository
                 LanguagesId=model.LanguageId,
                 ToTalPages=model.ToTalPages.HasValue? model.ToTalPages.Value:0,
                 UpdatedOn=DateTime.UtcNow,
-                CoverImageUrl=model.CoverImageUrl
+                CoverImageUrl=model.CoverImageUrl,
+                BookPdfUrl=model.BoohPdfUrl
                 
             };
             newBook.BookGallery = new List<BookGallery>();
@@ -90,7 +91,8 @@ namespace Webgentle.BookStore.Repository
                         Id = g.Id,
                         Name = g.Name,
                         URL = g.URL
-                    }).ToList()
+                    }).ToList(),
+                    BoohPdfUrl=book.BookPdfUrl
 
                 }).FirstOrDefaultAsync();
         }

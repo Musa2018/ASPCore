@@ -87,12 +87,14 @@ namespace Webgentle.BookStore.Controllers
                         bookModel.Gallery.Add(gallery);
 
                     }
-                    //folder += Guid.NewGuid().ToString() + "_" + bookModel.coverPhoto.FileName;
-                    //bookModel.CoverImageUrl = "/"+folder;
-                    //string serverFolder = Path.Combine(_webHostEnvironment.WebRootPath,folder);
-                    //await bookModel.coverPhoto.CopyToAsync(new FileStream(serverFolder,FileMode.Create));
 
+                }
 
+                if (bookModel.BookPdf != null)
+                {
+                    string folder = "books/pdf/";
+                    bookModel.BoohPdfUrl = await UploadImage(folder, bookModel.BookPdf);
+                    
                 }
                 int id = await _bookRepository.AddNewBook(bookModel);
                 if (id > 0)

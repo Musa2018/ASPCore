@@ -854,3 +854,6 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.dll
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.pdb
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Webgentle.BookStore.genruntimeconfig.cache
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_header.cshtml.g.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_book.cshtml.g.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_footer.cshtml.g.cs

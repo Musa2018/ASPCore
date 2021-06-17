@@ -36,5 +36,9 @@ namespace Webgentle.BookStore.Models
         [Required]
         public IFormFileCollection galleryFiles { get; set; }
         public List<GalleryModel> Gallery { get; set; }
+        [Display(Name = "Upload Book in pdf format")]
+        [Required]
+        public IFormFile BookPdf { get; set; }
+        public string BoohPdfUrl { get; set; }
     }
 }
