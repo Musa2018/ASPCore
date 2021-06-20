@@ -46,33 +46,38 @@ namespace Webgentle.BookStore.Repository
           await  _context.SaveChangesAsync();
             return newBook.id;
         }
-        public async Task<List<BookModel>> GetAllBooks()
+         public async Task<List<BookModel>> GetAllBooks()
         {
-            var books = new List<BookModel>();
-            var allBooks = await _context.Books.ToListAsync();
-            if (allBooks?.Any() == true)
-            {
-                foreach (var book in allBooks)
-                {
-                    books.Add(new BookModel()
-                    {
-                        Author = book.Author,
-                        Category=book.Category,
-                        id=book.id,
-                        ToTalPages=book.ToTalPages,
-                        LanguageId=book.LanguagesId,
-                        Title=book.Title,
-                        Description=book.Description,
-                        CoverImageUrl=book.CoverImageUrl
-                    });
-
-                    
-                    
-                }
-            }
-            return books;
+            return await _context.Books
+                  .Select(book => new BookModel()
+                  {
+                    Author=book.Author,
+                    Category=book.Category,
+                    Description=book.Description,
+                    id=book.id,
+                    LanguageId=book.LanguagesId,
+                    Language=book.Languages.Name,
+                    Title=book.Title,
+                    ToTalPages=book.ToTalPages,
+                    CoverImageUrl=book.CoverImageUrl
+                  }).ToListAsync();
         }
-
+        public async Task<List<BookModel>> GetTopBooksAsync(int count)
+        {
+            return await _context.Books
+                  .Select(book => new BookModel()
+                  {
+                    Author=book.Author,
+                    Category=book.Category,
+                    Description=book.Description,
+                    id=book.id,
+                    LanguageId=book.LanguagesId,
+                    Language=book.Languages.Name,
+                    Title=book.Title,
+                    ToTalPages=book.ToTalPages,
+                    CoverImageUrl=book.CoverImageUrl
+                  }).Take(count).ToListAsync();
+        }
         public async Task<BookModel>  GetBookById(int id)
         {
             return await _context.Books.Where(x => x.id == id)

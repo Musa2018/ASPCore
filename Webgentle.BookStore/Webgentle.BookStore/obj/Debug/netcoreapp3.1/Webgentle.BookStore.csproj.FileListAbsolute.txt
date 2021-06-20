@@ -857,3 +857,4 @@ E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netco
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_header.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_book.cshtml.g.cs
 E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_footer.cshtml.g.cs
+E:\ASPCore2021\BookStore\Webgentle.BookStore\Webgentle.BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Components\TopBooks\Default.cshtml.g.cs

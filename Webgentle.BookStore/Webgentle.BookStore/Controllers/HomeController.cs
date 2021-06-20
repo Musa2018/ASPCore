@@ -5,10 +5,11 @@ using System.Linq;
 using System.Threading.Tasks;
 
 namespace Webgentle.BookStore.Controllers
-{
+{    [Route("[controller]/[action]")]
     public class HomeController:Controller
     {    [ViewData]
         public string Title { get; set; }
+        [Route("~/")]
         public ViewResult Index()
         {
             
@@ -20,6 +21,7 @@ namespace Webgentle.BookStore.Controllers
             Title = "About Us";
             return View();
         }
+
         public ViewResult ContactUs()
         {
             Title = "Contact Us";
