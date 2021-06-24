@@ -8,7 +8,7 @@ using Webgentle.BookStore.Models;
 
 namespace Webgentle.BookStore.Repository
 {
-    public class BookRepository
+    public class BookRepository : IBookRepository
     {
         private readonly BookStoreContext _context = null;
 
@@ -20,46 +20,46 @@ namespace Webgentle.BookStore.Repository
         {
             var newBook = new Books()
             {
-                Author=model.Author,
-                CreatedOn=DateTime.UtcNow,
-                Description=model.Description,
-                Title=model.Title,
-                LanguagesId=model.LanguageId,
-                ToTalPages=model.ToTalPages.HasValue? model.ToTalPages.Value:0,
-                UpdatedOn=DateTime.UtcNow,
-                CoverImageUrl=model.CoverImageUrl,
-                BookPdfUrl=model.BoohPdfUrl
-                
+                Author = model.Author,
+                CreatedOn = DateTime.UtcNow,
+                Description = model.Description,
+                Title = model.Title,
+                LanguagesId = model.LanguageId,
+                ToTalPages = model.ToTalPages.HasValue ? model.ToTalPages.Value : 0,
+                UpdatedOn = DateTime.UtcNow,
+                CoverImageUrl = model.CoverImageUrl,
+                BookPdfUrl = model.BoohPdfUrl
+
             };
             newBook.BookGallery = new List<BookGallery>();
             foreach (var file in model.Gallery)
             {
                 newBook.BookGallery.Add(new BookGallery()
                 {
-                    Name=file.Name,
-                    URL=file.URL
+                    Name = file.Name,
+                    URL = file.URL
 
                 });
             }
 
-            await  _context.Books.AddAsync(newBook);
-          await  _context.SaveChangesAsync();
+            await _context.Books.AddAsync(newBook);
+            await _context.SaveChangesAsync();
             return newBook.id;
         }
-         public async Task<List<BookModel>> GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
             return await _context.Books
                   .Select(book => new BookModel()
                   {
-                    Author=book.Author,
-                    Category=book.Category,
-                    Description=book.Description,
-                    id=book.id,
-                    LanguageId=book.LanguagesId,
-                    Language=book.Languages.Name,
-                    Title=book.Title,
-                    ToTalPages=book.ToTalPages,
-                    CoverImageUrl=book.CoverImageUrl
+                      Author = book.Author,
+                      Category = book.Category,
+                      Description = book.Description,
+                      id = book.id,
+                      LanguageId = book.LanguagesId,
+                      Language = book.Languages.Name,
+                      Title = book.Title,
+                      ToTalPages = book.ToTalPages,
+                      CoverImageUrl = book.CoverImageUrl
                   }).ToListAsync();
         }
         public async Task<List<BookModel>> GetTopBooksAsync(int count)
@@ -67,18 +67,18 @@ namespace Webgentle.BookStore.Repository
             return await _context.Books
                   .Select(book => new BookModel()
                   {
-                    Author=book.Author,
-                    Category=book.Category,
-                    Description=book.Description,
-                    id=book.id,
-                    LanguageId=book.LanguagesId,
-                    Language=book.Languages.Name,
-                    Title=book.Title,
-                    ToTalPages=book.ToTalPages,
-                    CoverImageUrl=book.CoverImageUrl
+                      Author = book.Author,
+                      Category = book.Category,
+                      Description = book.Description,
+                      id = book.id,
+                      LanguageId = book.LanguagesId,
+                      Language = book.Languages.Name,
+                      Title = book.Title,
+                      ToTalPages = book.ToTalPages,
+                      CoverImageUrl = book.CoverImageUrl
                   }).Take(count).ToListAsync();
         }
-        public async Task<BookModel>  GetBookById(int id)
+        public async Task<BookModel> GetBookById(int id)
         {
             return await _context.Books.Where(x => x.id == id)
                 .Select(book => new BookModel()
@@ -97,7 +97,7 @@ namespace Webgentle.BookStore.Repository
                         Name = g.Name,
                         URL = g.URL
                     }).ToList(),
-                    BoohPdfUrl=book.BookPdfUrl
+                    BoohPdfUrl = book.BookPdfUrl
 
                 }).FirstOrDefaultAsync();
         }
@@ -106,7 +106,7 @@ namespace Webgentle.BookStore.Repository
         {
             return null;
         }
-        
-        
+
+
     }
 }

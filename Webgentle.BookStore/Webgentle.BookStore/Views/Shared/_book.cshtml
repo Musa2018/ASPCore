@@ -6,7 +6,7 @@
         <p class="card-text">@(string.IsNullOrEmpty(Model.Description)? "Description is not available" : Model.Description)</p>
         <div class="d-flex justify-content-between align-items-center" >
             <div class="btn-group">
-                <a asp-action="getbook" asp-route-id="@Model.id" 
+                <a asp-controller="Book" asp-action="getbook" asp-route-id="@Model.id" 
                    class="btn btn-sm btn-outline-secondary" > View Details</a>
             </div>
             <small class="text-muted">@(string.IsNullOrEmpty(Model.Author)? "Author is not available" : Model.Author)</small>

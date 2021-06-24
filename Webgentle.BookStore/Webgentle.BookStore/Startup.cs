@@ -28,8 +28,8 @@ namespace Webgentle.BookStore
 #if DEBUG
             services.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
-            services.AddScoped<BookRepository, BookRepository>();
-            services.AddScoped<LanguagesRepository, LanguagesRepository>();
+            services.AddScoped<IBookRepository, BookRepository>();
+            services.AddScoped<ILanguagesRepository, LanguagesRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

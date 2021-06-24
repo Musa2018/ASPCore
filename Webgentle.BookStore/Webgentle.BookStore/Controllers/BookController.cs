@@ -18,10 +18,10 @@ namespace Webgentle.BookStore.Controllers
         [ViewData]
         public string Title { get; set; }
 
-        public readonly BookRepository _bookRepository=null;
-        public readonly LanguagesRepository _languagesRepository=null;
+        public readonly IBookRepository _bookRepository=null;
+        public readonly ILanguagesRepository _languagesRepository=null;
         public readonly IWebHostEnvironment _webHostEnvironment;
-        public BookController(BookRepository bookRepository,LanguagesRepository languagesRepository, IWebHostEnvironment webHostEnvironment)
+        public BookController(IBookRepository bookRepository,ILanguagesRepository languagesRepository, IWebHostEnvironment webHostEnvironment)
         {
             _bookRepository = bookRepository;
             _languagesRepository = languagesRepository;
