@@ -52,7 +52,7 @@ namespace Webgentle.BookStore.Controllers
             {
                 //Language = "2"
             };
-           ViewBag.Language=new SelectList( await _languagesRepository.GetLanguages(),"Id","Name");
+          // ViewBag.Language=new SelectList( await _languagesRepository.GetLanguages(),"Id","Name");
             
             ViewBag.IsSuccess = isSuccess;
             ViewBag.bookId = bookId;
@@ -106,7 +106,7 @@ namespace Webgentle.BookStore.Controllers
                 }
             }
 
-            ViewBag.Language = new SelectList(await _languagesRepository.GetLanguages(), "Id", "Name");
+           // ViewBag.Language = new SelectList(await _languagesRepository.GetLanguages(), "Id", "Name");
 
 
             return View();

@@ -107,6 +107,11 @@ namespace Webgentle.BookStore.Repository
             return null;
         }
 
+        public string GetAppName()
+        {
+            return "Books Store App";
+        }
+
 
     }
 }
